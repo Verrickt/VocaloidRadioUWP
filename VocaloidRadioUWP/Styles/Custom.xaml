@@ -1,0 +1,55 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:util="using:VocaloidRadioUWP.Util"
+                    xmlns:webContentParser="using:WebContentParser">
+
+    <x:Double x:Key="NarrowMinWidth">0</x:Double>
+    <x:Double x:Key="NormalMinWidth">521</x:Double>
+    <x:Double x:Key="WideMinWidth">1200</x:Double>
+
+    <util:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter"></util:BooleanToVisibilityConverter>
+    <util:BackgroundConverter x:Name="BackgroundConverter"></util:BackgroundConverter>
+    <util:PlaybackStateToButtonIconConverter x:Key="IconConverter
+                                                 "></util:PlaybackStateToButtonIconConverter>
+    <util:BooleanNotConverter x:Name="BooleanNotConverter"></util:BooleanNotConverter>
+
+
+    <Style  TargetType="ListViewItem" x:Key="ListViewTransparent">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+    </Style>
+    <Style TargetType="ListViewItem" x:Key="ListViewDark">
+        <Setter Property="Background" Value="{StaticResource ListViewDarkBrush}">
+        </Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+
+    </Style>
+    <Style TargetType="ListViewItem" x:Key="ListViewLight">
+        <Setter Property="Background" Value="Gainsboro"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+
+    </Style>
+
+    <SolidColorBrush x:Key="ListViewDarkBrush">
+        <Color>#171717</Color>
+    </SolidColorBrush>
+
+    <ResourceDictionary.ThemeDictionaries >
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="AccentColorBrush" >
+            </SolidColorBrush>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}">
+            </SolidColorBrush>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="AccentColorBrush" Color="{ThemeResource SystemAccentColor}">
+            </SolidColorBrush>
+        </ResourceDictionary>
+
+
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>
+
+

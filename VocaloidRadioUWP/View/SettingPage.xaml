@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="VocaloidRadioUWP.View.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VocaloidRadioUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Unloaded="SettingPage_OnUnloaded"
+    >
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="WrapWholeWords" ></Setter>
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid Margin="15,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <StackPanel Name="ThemeStackPanel"
+                Loaded="ThemeStackPanel_OnLoaded">
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}">Theme</TextBlock>
+                <TextBlock Name="Tip">You'll see your change the next time you start the app</TextBlock>
+                <RadioButton Name="Light" Checked="Light_OnChecked" GroupName="Theme" Content="Light" ></RadioButton>
+                <RadioButton Name="Dark" Checked="Dark_OnChecked" GroupName="Theme" Content="Dark"></RadioButton>
+                <RadioButton Name="System" Checked="System_OnChecked" GroupName="Theme" Content="Use system setting"></RadioButton>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="0,10" Loaded="StackPanel_Loaded">
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}">Stream quality preference</TextBlock>
+                <StackPanel Margin="0,5">
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">WLAN</TextBlock>
+                    <RadioButton Name="WLANHigh" GroupName="WLAN" Content="HighQuality (192Kbps)" Checked="WLANHigh_Checked"></RadioButton>
+                    <RadioButton Name="WLANLow" GroupName="WLAN" Content="LowQuality  (128Kbps)" Checked="WLANLow_Checked"></RadioButton>
+                </StackPanel >
+                <StackPanel Margin="0,5">
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Cellular Network</TextBlock>
+                    <RadioButton Name="CellularHigh" GroupName="Cellular" Content="HighQuality (192Kbps)" Checked="CellularHigh_Checked"></RadioButton>
+                    <RadioButton Name="CellularLow" GroupName="Cellular" Content="LowQuality  (128Kbps)" Checked="CellularLow_Checked"></RadioButton>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

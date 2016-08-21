@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="VocaloidRadioUWP.View.InvisibleWebViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VocaloidRadioUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Unloaded="InvisibleWebViewPage_OnUnloaded">
+
+    <StackPanel Visibility="Collapsed" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <WebView Name="PlaylistWebView" NavigationCompleted="PlaylistWebView_OnNavigationCompleted" ></WebView>
+        <WebView Name="HighQualityServerWebView" NavigationCompleted="HighQualityServerWebView_OnNavigationCompleted"></WebView>
+        <WebView Name="LowQualityServerWebView" NavigationCompleted="LowQualityServerWebView_OnNavigationCompleted"></WebView>
+    </StackPanel>
+</Page>

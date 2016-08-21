@@ -1,0 +1,11 @@
+﻿<Application
+    x:Class="VocaloidRadioUWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VocaloidRadioUWP"
+    xmlns:util="using:VocaloidRadioUWP.Util"
+    >
+    <Application.Resources>
+        <ResourceDictionary Source="Styles\Custom.xaml" />
+    </Application.Resources>
+</Application>

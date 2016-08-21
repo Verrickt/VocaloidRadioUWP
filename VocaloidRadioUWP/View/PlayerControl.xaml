@@ -1,0 +1,44 @@
+﻿<UserControl
+    x:Class="VocaloidRadioUWP.View.PlayerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VocaloidRadioUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:VocaloidRadioUWP.ViewModel"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Loading="UserControl_Loading"
+    Unloaded="UserControl_Unloaded">
+    <UserControl.DataContext>
+        <viewmodel:PlayerControlViewModel x:Name="VM"></viewmodel:PlayerControlViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="AppBarButton">
+            <Setter Property="Height" Value="48"></Setter>
+            <Setter Property="Width" Value="48"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <ContentControl IsEnabled="{Binding IsBuffering,Converter={StaticResource BooleanNotConverter}}" Height="48">
+            <StackPanel  Orientation="Horizontal" Background="Transparent" >
+
+                <AppBarButton VerticalContentAlignment="Center"   Click="PlayButton_Click" Name="PlayButton" Icon="Play" VerticalAlignment="Center">
+
+                </AppBarButton>
+                <AppBarButton Click="PauseButton_Click" Name="PauseButton" Icon="Pause" VerticalAlignment="Center"></AppBarButton>
+                <AppBarButton Name="VolumeButton" Icon="Volume" VerticalAlignment="Center">
+                    <AppBarButton.Flyout>
+                        <Flyout>
+                                <Slider Name="VolumeSlider" Orientation="Horizontal"   VerticalAlignment="Center" Width="200"   Maximum="100"  Minimum="0"  SmallChange="0.1" StepFrequency="0.1" 
+                       Value="{Binding Volume,Mode=TwoWay}"      ></Slider>
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <AppBarButton Click="StopButton_Click" Name="StopButton" Icon="Stop" VerticalAlignment="Center"></AppBarButton>
+            </StackPanel>
+        </ContentControl>
+        <ProgressRing IsEnabled="True" IsActive="{Binding IsBuffering}" Height="50" Width="50"></ProgressRing>
+    </Grid>
+</UserControl>

@@ -1,0 +1,214 @@
+﻿<UserControl
+    x:Class="VocaloidRadioUWP.View.PlayerListHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VocaloidRadioUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Unloaded="PlayerListHeader_OnUnloaded">
+    <UserControl.Resources>
+        <Style x:Key="BorderBackgroundStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <Binding RelativeSource="{RelativeSource Self}" Converter="{StaticResource BackgroundConverter}"></Binding>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+    </UserControl.Resources>
+    <Border Style="{StaticResource BorderBackgroundStyle}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                        <Setter Target="AlbumImage.Height" Value="140" />
+                        <Setter Target="AlbumImage.Width" Value="140" />
+                        <Setter Target="AlbumImage.(Grid.Column)" Value="1" />
+                        <Setter Target="AlbumImage.(Grid.Row)" Value="0" />
+                        <Setter Target="SongInfoStackPanel.(Grid.Row)" Value="1" />
+                        <Setter Target="SongInfoStackPanel.(Grid.Column)" Value="1" />
+                        <Setter Target="grid.(FrameworkElement.VerticalAlignment)" Value="Center" />
+                        <Setter Target="grid.(FrameworkElement.HorizontalAlignment)" Value="Center" />
+                        <!--MarkerHere-->
+                        <Setter Target="SongInfoStackPanel.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,10,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Setter Target="ArtistTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center" />
+                        <Setter Target="AlbumTextBlock.(UIElement.Visibility)" Value="Collapsed" />
+                        <Setter Target="TimePlayedTextBlock.(UIElement.Visibility)" Value="Collapsed" />
+                        <Setter Target="ArtistTextBlock.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,5</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="ServerInfoStackPanel.(Grid.Row)" Value="2"/>
+                        <Setter Target="ServerInfoStackPanel.(Grid.Column)" Value="1"/>
+                        <Setter Target="ServerStatus.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="ServerStatus.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerListener.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerBitrate.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="ServerStatus.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerListener.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerBitrate.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="ServerInfoStackPanel.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,10,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="ServerInfoStackPanel.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="grid.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>40,5</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="TitleTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="ArtistTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="AlbumTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="TimePlayedTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="TitleTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="AlbumTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="TimePlayedTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Normal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                        <Setter Target="AlbumImage.Height" Value="200" />
+                        <Setter Target="AlbumImage.Width" Value="200" />
+                        <Setter Target="AlbumImage.(Grid.Column)" Value="1" />
+                        <Setter Target="AlbumImage.(Grid.Row)" Value="0" />
+                        <Setter Target="SongInfoStackPanel.(Grid.Row)" Value="1" />
+                        <Setter Target="SongInfoStackPanel.(Grid.Column)" Value="1" />
+                        <Setter Target="grid.(FrameworkElement.HorizontalAlignment)" Value="Center" />
+                        <Setter Target="SongInfoStackPanel.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,10,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="ArtistTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center" />
+                        <Setter Target="AlbumTextBlock.(UIElement.Visibility)" Value="Collapsed" />
+                        <Setter Target="TimePlayedTextBlock.(UIElement.Visibility)" Value="Collapsed" />
+                        <Setter Target="ArtistTextBlock.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,5</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="TitleTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center" />
+                        <Setter Target="ServerInfoStackPanel.(Grid.Column)" Value="1"/>
+                        <Setter Target="ServerInfoStackPanel.(Grid.Row)" Value="2"/>
+                        <Setter Target="ServerStatus.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="ServerStatus.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerListener.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerBitrate.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="ServerStatus.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerListener.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="CurrentServerBitrate.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="ServerInfoStackPanel.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,10,0,0</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="ServerInfoStackPanel.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="grid.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>40,5</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="AlbumTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="TimePlayedTextBlock.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="TitleTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="ArtistTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="AlbumTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                        <Setter Target="TimePlayedTextBlock.(FrameworkElement.VerticalAlignment)" Value="Center"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                        <Setter Target="AlbumImage.Height" Value="280" />
+                        <Setter Target="AlbumImage.Width" Value="280" />
+                        <Setter Target="AlbumImage.(Grid.Column)" Value="0" />
+                        <Setter Target="AlbumImage.(Grid.Row)" Value="0" />
+                        <Setter Target="SongInfoStackPanel.(Grid.Row)" Value="0" />
+                        <Setter Target="SongInfoStackPanel.(Grid.Column)" Value="1" />
+                        <Setter Target="ServerInfoStackPanel.(Grid.Row)" Value="0" />
+                        <Setter Target="ServerInfoStackPanel.(Grid.Column)" Value="2" />
+                        <Setter Target="ServerStatus.(FrameworkElement.HorizontalAlignment)" Value="Left"/>
+                        <Setter Target="CurrentServerListener.(FrameworkElement.HorizontalAlignment)" Value="Left"/>
+                        <Setter Target="CurrentServerBitrate.(FrameworkElement.HorizontalAlignment)" Value="Left"/>
+
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <Grid x:Name="grid" Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <Image Name="AlbumImage" Height="280" Width="280" Source="{Binding NowPlaying.AlbumUri}"
+                   Stretch="UniformToFill">
+            </Image>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="40,0,0,0" Name="SongInfoStackPanel">
+                <TextBlock Foreground="White" Margin="0,0,0,5" Name="TitleTextBlock"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding NowPlaying.Title}"
+                          TextWrapping="WrapWholeWords">
+                </TextBlock>
+                <TextBlock Foreground="White" Margin="0,0,0,5" Name="ArtistTextBlock"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding NowPlaying.Artist}">
+                </TextBlock>
+                <TextBlock Foreground="White" Margin="0,0,0,5" Name="AlbumTextBlock"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding NowPlaying.Album}">
+                </TextBlock>
+                <TextBlock Foreground="White" Margin="0,0,0,5" Name="TimePlayedTextBlock"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding NowPlaying.TimePlayed}">
+                </TextBlock>
+
+            </StackPanel>
+            <StackPanel Grid.Column="2" Name="ServerInfoStackPanel" Orientation="Vertical" Margin="40,0,0,0">
+                <TextBlock Foreground="White" x:Name="ServerStatus" Margin="0,0,0,5"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding CurrentServer.ServerStatus}">
+                </TextBlock>
+
+                <TextBlock Foreground="White" Margin="0,0,0,5" Name="CurrentServerListener"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding CurrentServer.CurrentListeners}">
+                </TextBlock>
+
+                <TextBlock Foreground="White" Margin="0,0,0,5" Name="CurrentServerBitrate"
+                           Style="{StaticResource BodyTextBlockStyle}" Text="{Binding CurrentServer.Bitrate}">
+                </TextBlock>
+
+            </StackPanel>
+        </Grid>
+
+    </Border>
+</UserControl>
